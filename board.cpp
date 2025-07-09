@@ -2,6 +2,12 @@
 #include <iostream>
 #include "constants.h"
 
+Board::Board(){
+    for ( int i = 0; i < 1000; ++i ){
+        moveTiles( Direction::getRandomDirection() );
+    }
+}
+
 void Board::display() const{
     for ( int i = 0; i < g_ConsoleLines; ++i ){
         std::cout << std::endl;
@@ -23,6 +29,7 @@ Point Board::findEmpty() const{
             }
         }
     }
+    return {-1, -1};
 }
 
 bool Board::validPoint( Point p ){

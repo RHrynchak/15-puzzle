@@ -40,17 +40,6 @@ void close(){
 int main(){
     Board board{};
     board.display();
-    for ( int i = 0; i < 5; ++i ){
-        std::cout << Direction::getRandomDirection().getType() << std::endl;
-    }
-    std::cout << std::boolalpha;
-    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::UP)    == Point{ 1, 0 }) << '\n';
-    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::DOWN)  == Point{ 1, 2 }) << '\n';
-    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::LEFT)  == Point{ 0, 1 }) << '\n';
-    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::RIGHT) == Point{ 2, 1 }) << '\n';
-    std::cout << (Point{ 1, 1 } != Point{ 2, 1 }) << '\n';
-    std::cout << (Point{ 1, 1 } != Point{ 1, 2 }) << '\n';
-    std::cout << !(Point{ 1, 1 } != Point{ 1, 1 }) << '\n';
 
     if ( !init() ){
         SDL_Log( "Failed to initialize!\n" );
@@ -69,27 +58,25 @@ int main(){
                     switch ( e.key.key ){
                     case SDLK_W:
                         direction.changeType( Direction::Type::UP );
-                        std::cout << direction.getType() << std::endl;
-                        SDL_Log( "Valid command: up" );
+                        board.moveTiles( direction );
+                        board.display();
                         break;
                     case SDLK_S:
                         direction.changeType( Direction::Type::DOWN );
-                        std::cout << direction.getType() << std::endl;
-                        SDL_Log( "Valid command: down" );
+                        board.moveTiles( direction );
+                        board.display();
                         break;
                     case SDLK_A:
                         direction.changeType( Direction::Type::LEFT );
-                        std::cout << direction.getType() << std::endl;
-                        SDL_Log( "Valid command: left" );
+                        board.moveTiles( direction );
+                        board.display();
                         break;
                     case SDLK_D:
                         direction.changeType( Direction::Type::RIGHT );
-                        std::cout << direction.getType() << std::endl;
-                        SDL_Log( "Valid command: right" );
+                        board.moveTiles( direction );
+                        board.display();
                         break;
                     }
-                    board.moveTiles( direction );
-                    board.display();
                 }
             }
             SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );

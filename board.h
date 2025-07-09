@@ -4,7 +4,7 @@
 
 class Board{
 public:
-    Board() = default;
+    Board();
     static constexpr int BOARD_SIZE {4};
     void display() const;
     void moveTiles( Direction direction );
