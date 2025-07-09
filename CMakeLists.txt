@@ -26,7 +26,7 @@ find_package(SDL3 REQUIRED CONFIG)
 #find_package(SDL3_image REQUIRED CONFIG)
 find_package(SDL3_ttf REQUIRED CONFIG)
 
-add_executable(15puzzle main.cpp tile.cpp board.cpp direction.cpp)
+add_executable(15puzzle main.cpp tile.cpp board.cpp direction.cpp point.cpp)
 
 # Link SDL3 - check which targets are available
 if(TARGET SDL3::SDL3-shared)

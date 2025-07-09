@@ -13,6 +13,9 @@
     <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\direction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\point.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\CMakeLists.txt" />

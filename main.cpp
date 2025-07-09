@@ -1,6 +1,7 @@
 #include "board.h"
 #include "constants.h"
 #include "direction.h"
+#include "point.h"
 #include <SDL3/SDL.h>
 #include <iostream>
 
@@ -42,6 +43,14 @@ int main(){
     for ( int i = 0; i < 5; ++i ){
         std::cout << Direction::getRandomDirection() << std::endl;
     }
+    std::cout << std::boolalpha;
+    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::UP)    == Point{ 1, 0 }) << '\n';
+    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::DOWN)  == Point{ 1, 2 }) << '\n';
+    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::LEFT)  == Point{ 0, 1 }) << '\n';
+    std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::RIGHT) == Point{ 2, 1 }) << '\n';
+    std::cout << (Point{ 1, 1 } != Point{ 2, 1 }) << '\n';
+    std::cout << (Point{ 1, 1 } != Point{ 1, 2 }) << '\n';
+    std::cout << !(Point{ 1, 1 } != Point{ 1, 1 }) << '\n';
 
     if ( !init() ){
         SDL_Log( "Failed to initialize!\n" );
