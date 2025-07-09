@@ -7,6 +7,16 @@ Direction::Type Direction::getType() { return m_type; }
 
 void Direction::changeType( Type type ) { m_type = type; }
 
+Direction Direction::operator-(){
+    switch ( m_type ){
+        case UP: return Direction { DOWN };
+        case DOWN: return Direction { UP };
+        case LEFT: return Direction { RIGHT };
+        case RIGHT: return Direction { LEFT };
+    }
+    return *this;
+}
+
 Direction Direction::getRandomDirection(){
     return Direction { static_cast<Type>( Random::get( 0, Type::TOTAL_DIRECTIONS - 1 ) ) };
 }

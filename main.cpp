@@ -88,6 +88,8 @@ int main(){
                         SDL_Log( "Valid command: right" );
                         break;
                     }
+                    board.moveTiles( direction );
+                    board.display();
                 }
             }
             SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );

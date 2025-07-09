@@ -13,7 +13,7 @@ public:
     Direction( Type type );
     Type getType();
     void changeType( Type type );
-    
+    Direction operator- ();
     static Direction getRandomDirection();
 private:
     Type m_type;

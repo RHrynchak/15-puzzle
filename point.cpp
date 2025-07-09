@@ -10,8 +10,8 @@ bool Point::operator!=( const Point& other ){
     return !( *this == other );
 }
 
-Point Point::getAdjacentPoint( Direction::Type direction ){
-    switch ( direction )
+Point Point::getAdjacentPoint( Direction direction ){
+    switch ( direction.getType() )
     {
     case Direction::Type::UP: return Point{ m_x, m_y - 1};
     case Direction::Type::DOWN: return Point{ m_x, m_y + 1};
