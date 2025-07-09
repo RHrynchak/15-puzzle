@@ -1,0 +1,3 @@
+C:/Users/Роман/OneDrive/Робочий стіл/проги/Pet projects/15 puzzle/build/CMakeFiles/15puzzle.dir
+C:/Users/Роман/OneDrive/Робочий стіл/проги/Pet projects/15 puzzle/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Роман/OneDrive/Робочий стіл/проги/Pet projects/15 puzzle/build/CMakeFiles/ZERO_CHECK.dir

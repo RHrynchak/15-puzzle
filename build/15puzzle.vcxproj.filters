@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\board.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\direction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{83A5FBE0-62E8-3278-803E-CBE125623776}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
