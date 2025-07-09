@@ -1,12 +1,12 @@
 #include "direction.h"
 #include "random.h"
 
-Direction::Direction( Type direction ) : m_type( direction ) {}
+Direction::Direction( Type type ) : m_type( type ) {}
 
-Direction::Type Direction::getDirection() { return m_type; }
+Direction::Type Direction::getType() { return m_type; }
 
-void Direction::changeDirection( Type direction ) { m_type = direction; }
+void Direction::changeType( Type type ) { m_type = type; }
 
-Direction::Type Direction::getRandomDirection(){
-    return static_cast<Type>( Random::get( 0, Type::TOTAL_DIRECTIONS - 1 ) );
+Direction Direction::getRandomDirection(){
+    return Direction { static_cast<Type>( Random::get( 0, Type::TOTAL_DIRECTIONS - 1 ) ) };
 }

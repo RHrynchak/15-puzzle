@@ -10,10 +10,11 @@ public:
         TOTAL_DIRECTIONS
     };
     Direction() = default;
-    Direction( Type direction );
-    Type getDirection();
-    void changeDirection( Type direction );
-    static Type getRandomDirection();
+    Direction( Type type );
+    Type getType();
+    void changeType( Type type );
+    
+    static Direction getRandomDirection();
 private:
     Type m_type;
 };

@@ -41,7 +41,7 @@ int main(){
     Board board{};
     board.display();
     for ( int i = 0; i < 5; ++i ){
-        std::cout << Direction::getRandomDirection() << std::endl;
+        std::cout << Direction::getRandomDirection().getType() << std::endl;
     }
     std::cout << std::boolalpha;
     std::cout << (Point{ 1, 1 }.getAdjacentPoint(Direction::UP)    == Point{ 1, 0 }) << '\n';
@@ -68,23 +68,23 @@ int main(){
                 else if ( e.type == SDL_EVENT_KEY_DOWN ) {
                     switch ( e.key.key ){
                     case SDLK_W:
-                        direction.changeDirection( Direction::Type::UP );
-                        std::cout << direction.getDirection() << std::endl;
+                        direction.changeType( Direction::Type::UP );
+                        std::cout << direction.getType() << std::endl;
                         SDL_Log( "Valid command: up" );
                         break;
                     case SDLK_S:
-                        direction.changeDirection( Direction::Type::DOWN );
-                        std::cout << direction.getDirection() << std::endl;
+                        direction.changeType( Direction::Type::DOWN );
+                        std::cout << direction.getType() << std::endl;
                         SDL_Log( "Valid command: down" );
                         break;
                     case SDLK_A:
-                        direction.changeDirection( Direction::Type::LEFT );
-                        std::cout << direction.getDirection() << std::endl;
+                        direction.changeType( Direction::Type::LEFT );
+                        std::cout << direction.getType() << std::endl;
                         SDL_Log( "Valid command: left" );
                         break;
                     case SDLK_D:
-                        direction.changeDirection( Direction::Type::RIGHT );
-                        std::cout << direction.getDirection() << std::endl;
+                        direction.changeType( Direction::Type::RIGHT );
+                        std::cout << direction.getType() << std::endl;
                         SDL_Log( "Valid command: right" );
                         break;
                     }

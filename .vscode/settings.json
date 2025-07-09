@@ -47,6 +47,10 @@
         "xmemory": "cpp",
         "xstring": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "ratio": "cpp",
+        "variant": "cpp"
     }
 }
