@@ -4,10 +4,12 @@
 
 class Board{
 public:
-    Board();
+    Board( int shuffles );
     static constexpr int BOARD_SIZE {4};
     void display() const;
     void moveTiles( Direction direction );
+    bool operator== ( const Board& other ) const; 
+    bool isSolved() const;
 private:
     Point findEmpty() const;
     static bool validPoint( Point p );

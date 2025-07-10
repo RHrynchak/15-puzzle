@@ -38,7 +38,7 @@ void close(){
 }
 
 int main(){
-    Board board{};
+    Board board(2000);
     board.display();
 
     if ( !init() ){
@@ -55,27 +55,26 @@ int main(){
                     SDL_Log( "\n\nBye!\n\n" );
                 }
                 else if ( e.type == SDL_EVENT_KEY_DOWN ) {
-                    switch ( e.key.key ){
-                    case SDLK_W:
-                        direction.changeType( Direction::Type::UP );
+                    if ( e.key.key == SDLK_W || e.key.key == SDLK_S || e.key.key == SDLK_A || e.key.key == SDLK_D ){
+                        switch ( e.key.key ){
+                        case SDLK_W:
+                            direction.changeType( Direction::Type::UP );
+                            break;
+                        case SDLK_S:
+                            direction.changeType( Direction::Type::DOWN );
+                            break;
+                        case SDLK_A:
+                            direction.changeType( Direction::Type::LEFT );
+                            break;
+                        case SDLK_D:
+                            direction.changeType( Direction::Type::RIGHT );
+                            break;
+                        }
                         board.moveTiles( direction );
                         board.display();
-                        break;
-                    case SDLK_S:
-                        direction.changeType( Direction::Type::DOWN );
-                        board.moveTiles( direction );
-                        board.display();
-                        break;
-                    case SDLK_A:
-                        direction.changeType( Direction::Type::LEFT );
-                        board.moveTiles( direction );
-                        board.display();
-                        break;
-                    case SDLK_D:
-                        direction.changeType( Direction::Type::RIGHT );
-                        board.moveTiles( direction );
-                        board.display();
-                        break;
+                        if ( board.isSolved() ){
+                            quit = true;
+                        }
                     }
                 }
             }

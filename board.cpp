@@ -2,8 +2,8 @@
 #include <iostream>
 #include "constants.h"
 
-Board::Board(){
-    for ( int i = 0; i < 1000; ++i ){
+Board::Board( int shuffles ){
+    for ( int i = 0; i < shuffles; ++i ){
         moveTiles( Direction::getRandomDirection() );
     }
 }
@@ -49,4 +49,20 @@ void Board::moveTiles( Direction direction ){
     Point p2 = p1.getAdjacentPoint( -direction );
     if ( Board::validPoint( p2 ) )
         swapTiles( p1, p2 );
+}
+
+bool Board::operator== ( const Board& other ) const{
+    for ( int i = 0; i < BOARD_SIZE; ++i ){
+        for ( int j = 0; j < BOARD_SIZE; ++j ){
+            if ( m_board[i][j].getNum() != other.m_board[i][j].getNum() ){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool Board::isSolved() const{
+    static Board solved(0);
+    return solved == *this;
 }
