@@ -1,9 +1,6 @@
 #include "board.h"
 #include "constants.h"
 #include "direction.h"
-#include "point.h"
-#include <SDL3/SDL.h>
-#include <iostream>
 
 bool init();
 void close();
@@ -13,7 +10,7 @@ SDL_Renderer* gRenderer;
 
 bool init(){
     bool success = true;
-    if ( !SDL_Init( SDL_INIT_VIDEO ) ){
+    if ( !SDL_Init(SDL_INIT_VIDEO) ) {
         SDL_Log( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         success = false;
     }
@@ -23,13 +20,19 @@ bool init(){
             success = false;
         }
         else {
+            SDL_SetRenderVSync( gRenderer, 1 );
             SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+            if ( !TTF_Init() ){
+				SDL_Log( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", SDL_GetError() );
+				success = false;
+			}
         }
     }
     return success;
 }
 
 void close(){
+    Tile::deleteFont();
     SDL_DestroyRenderer( gRenderer );
     SDL_DestroyWindow( gWindow );
     gRenderer = nullptr;
@@ -38,16 +41,14 @@ void close(){
 }
 
 int main(){
-    Board board(2000);
-    board.display();
-
-    if ( !init() ){
+    if ( !init() || !Tile::loadFont() ){
         SDL_Log( "Failed to initialize!\n" );
     }
     else{
         bool quit = false;
         SDL_Event e;
         Direction direction;
+        Board board(1000);
         while ( !quit ){
             while ( SDL_PollEvent( &e ) ){
                 if ( e.type == SDL_EVENT_QUIT ){
@@ -71,7 +72,7 @@ int main(){
                             break;
                         }
                         board.moveTiles( direction );
-                        board.display();
+                        board.display( gRenderer );
                         if ( board.isSolved() ){
                             quit = true;
                         }
@@ -79,8 +80,12 @@ int main(){
                 }
             }
             SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-			SDL_RenderClear( gRenderer );
+	        SDL_RenderClear( gRenderer );
+            board.display( gRenderer );
             SDL_RenderPresent( gRenderer );
+            if ( quit == true ){
+                SDL_Delay(500);
+            }
         }
     }
     close();

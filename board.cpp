@@ -1,6 +1,6 @@
 #include "board.h"
-#include <iostream>
 #include "constants.h"
+#include <algorithm>
 
 Board::Board( int shuffles ){
     for ( int i = 0; i < shuffles; ++i ){
@@ -8,16 +8,12 @@ Board::Board( int shuffles ){
     }
 }
 
-void Board::display() const{
-    for ( int i = 0; i < g_ConsoleLines; ++i ){
-        std::cout << std::endl;
-    }
+void Board::display( SDL_Renderer* renderer ) const{
     
     for ( int y = 0; y < BOARD_SIZE; ++y ){
         for ( int x = 0; x < BOARD_SIZE; ++x ){
-            m_board[ x ][ y ].display(); 
+            m_board[ x ][ y ].display( renderer, x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT); 
         }
-        std::cout << std::endl;
     }
 }
 
