@@ -11,9 +11,9 @@ public:
     };
     Direction() = default;
     Direction( Type type );
-    Type getType();
+    Type getType() const;
     void changeType( Type type );
-    Direction operator- ();
+    Direction operator- () const;
     static Direction getRandomDirection();
 private:
     Type m_type;

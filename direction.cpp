@@ -3,11 +3,11 @@
 
 Direction::Direction( Type type ) : m_type( type ) {}
 
-Direction::Type Direction::getType() { return m_type; }
+Direction::Type Direction::getType() const { return m_type; }
 
 void Direction::changeType( Type type ) { m_type = type; }
 
-Direction Direction::operator-(){
+Direction Direction::operator-() const{
     switch ( m_type ){
         case UP: return Direction { DOWN };
         case DOWN: return Direction { UP };

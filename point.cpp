@@ -2,15 +2,15 @@
 
 Point::Point( int x, int y ) : m_x(x), m_y(y) {}
 
-bool Point::operator==( const Point& other ){
+bool Point::operator==( const Point& other ) const {
     return (m_x == other.m_x) && (m_y == other.m_y);
 }
 
-bool Point::operator!=( const Point& other ){
+bool Point::operator!=( const Point& other ) const {
     return !( *this == other );
 }
 
-Point Point::getAdjacentPoint( Direction direction ){
+Point Point::getAdjacentPoint( Direction direction ) const {
     switch ( direction.getType() )
     {
     case Direction::Type::UP: return Point{ m_x, m_y - 1};
