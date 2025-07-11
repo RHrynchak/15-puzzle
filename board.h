@@ -10,6 +10,9 @@ public:
     bool moveTiles( Direction direction );
     bool operator== ( const Board& other ) const; 
     bool isSolved() const;
+    int getWidth() const;
+    int getHeight() const;
+    int getSize() const;
 private:
     static constexpr int BOARD_SIZE {4};
     static constexpr int TILE_WIDTH { GAME_WIDTH / BOARD_SIZE };

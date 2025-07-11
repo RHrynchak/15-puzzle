@@ -39,7 +39,7 @@ void close(){
 }
 
 int main(){
-    if ( !init() || !Tile::loadFont() ){
+    if ( !init() || !Tile::loadFont() || !GameSession::loadFont() ){
         SDL_Log( "Failed to initialize!\n" );
     }
     else{
@@ -52,15 +52,14 @@ int main(){
                     quit = true;
                     SDL_Log( "\n\nBye!\n\n" );
                 }
-                session.handleEvent(e);
-                if ( session.isOver() ){
-                    quit = true;
+                if ( session.isActive() ){
+                    session.handleEvent(e);
+                }
+                if ( e.type == SDL_EVENT_KEY_DOWN && e.key.key == SDLK_R){
+                    session.restart();
                 }
             }
             session.show( gRenderer );
-            if ( quit == true ){
-                SDL_Delay(500);
-            }
         }
     }
     close();

@@ -66,3 +66,7 @@ bool Board::isSolved() const{
     static Board solved(0);
     return solved == *this;
 }
+
+int Board::getWidth() const { return TILE_WIDTH * BOARD_SIZE; }
+int Board::getHeight() const { return TILE_HEIGHT * BOARD_SIZE; }
+int Board::getSize() const { return BOARD_SIZE; }
