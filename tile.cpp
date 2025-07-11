@@ -56,8 +56,8 @@ void Tile::display( SDL_Renderer* renderer, int x, int y, int width, int height 
             if ( textTexture != nullptr ){
                 int textWidth = textSurface->w;
                 int textHeight = textSurface->h;
-                int textX = x + (width - textWidth) / 2;
-                int textY = y + (height - textHeight) / 2;
+                int textX = x + (width - textWidth) / 2 - 5;
+                int textY = y + (height - textHeight) / 2 + 3;
                 SDL_FRect textRect = { (float)textX, (float)textY, (float)textWidth, (float)textHeight };
                 SDL_RenderTexture( renderer, textTexture, nullptr, &textRect );
                 SDL_DestroyTexture( textTexture );

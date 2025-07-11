@@ -49,6 +49,10 @@ int main(){
         SDL_Event e;
         Direction direction;
         Board board(1000);
+        SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	    SDL_RenderClear( gRenderer );
+        board.display( gRenderer );
+        SDL_RenderPresent( gRenderer );
         while ( !quit ){
             while ( SDL_PollEvent( &e ) ){
                 if ( e.type == SDL_EVENT_QUIT ){
@@ -76,13 +80,13 @@ int main(){
                         if ( board.isSolved() ){
                             quit = true;
                         }
+                        SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	                    SDL_RenderClear( gRenderer );
+                        board.display( gRenderer );
+                        SDL_RenderPresent( gRenderer );
                     }
                 }
             }
-            SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-	        SDL_RenderClear( gRenderer );
-            board.display( gRenderer );
-            SDL_RenderPresent( gRenderer );
             if ( quit == true ){
                 SDL_Delay(500);
             }
