@@ -6,14 +6,14 @@
 class Board{
 public:
     Board( int shuffles );
-    static constexpr int BOARD_SIZE {4};
-    static constexpr int TILE_WIDTH { GAME_WIDTH / BOARD_SIZE };
-    static constexpr int TILE_HEIGHT { GAME_HEIGHT / BOARD_SIZE };
     void display( SDL_Renderer* renderer ) const;
-    void moveTiles( Direction direction );
+    bool moveTiles( Direction direction );
     bool operator== ( const Board& other ) const; 
     bool isSolved() const;
 private:
+    static constexpr int BOARD_SIZE {4};
+    static constexpr int TILE_WIDTH { GAME_WIDTH / BOARD_SIZE };
+    static constexpr int TILE_HEIGHT { GAME_HEIGHT / BOARD_SIZE };
     Point findEmpty() const;
     static bool validPoint( Point p );
     void swapTiles( Point p1, Point p2 );

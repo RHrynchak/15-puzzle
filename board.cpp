@@ -40,11 +40,15 @@ void Board::swapTiles( Point p1, Point p2 ){
     std::swap( m_board[ p1.m_x ][ p1.m_y ], m_board[ p2.m_x ][ p2.m_y ] );
 }
 
-void Board::moveTiles( Direction direction ){
+bool Board::moveTiles( Direction direction ){
     Point p1 = findEmpty();
     Point p2 = p1.getAdjacentPoint( -direction );
     if ( Board::validPoint( p2 ) )
+    {
         swapTiles( p1, p2 );
+        return true;
+    }
+    return false;
 }
 
 bool Board::operator== ( const Board& other ) const{

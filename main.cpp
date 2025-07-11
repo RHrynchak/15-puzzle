@@ -1,6 +1,4 @@
-#include "board.h"
-#include "constants.h"
-#include "direction.h"
+#include "gamesession.h"
 
 bool init();
 void close();
@@ -47,46 +45,19 @@ int main(){
     else{
         bool quit = false;
         SDL_Event e;
-        Direction direction;
-        Board board(1000);
-        SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-	    SDL_RenderClear( gRenderer );
-        board.display( gRenderer );
-        SDL_RenderPresent( gRenderer );
+        GameSession session;
         while ( !quit ){
             while ( SDL_PollEvent( &e ) ){
                 if ( e.type == SDL_EVENT_QUIT ){
                     quit = true;
                     SDL_Log( "\n\nBye!\n\n" );
                 }
-                else if ( e.type == SDL_EVENT_KEY_DOWN ) {
-                    if ( e.key.key == SDLK_W || e.key.key == SDLK_S || e.key.key == SDLK_A || e.key.key == SDLK_D ){
-                        switch ( e.key.key ){
-                        case SDLK_W:
-                            direction.changeType( Direction::Type::UP );
-                            break;
-                        case SDLK_S:
-                            direction.changeType( Direction::Type::DOWN );
-                            break;
-                        case SDLK_A:
-                            direction.changeType( Direction::Type::LEFT );
-                            break;
-                        case SDLK_D:
-                            direction.changeType( Direction::Type::RIGHT );
-                            break;
-                        }
-                        board.moveTiles( direction );
-                        board.display( gRenderer );
-                        if ( board.isSolved() ){
-                            quit = true;
-                        }
-                        SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-	                    SDL_RenderClear( gRenderer );
-                        board.display( gRenderer );
-                        SDL_RenderPresent( gRenderer );
-                    }
+                session.handleEvent(e);
+                if ( session.isOver() ){
+                    quit = true;
                 }
             }
+            session.show( gRenderer );
             if ( quit == true ){
                 SDL_Delay(500);
             }

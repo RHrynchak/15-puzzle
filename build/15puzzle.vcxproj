@@ -425,6 +425,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\board.cpp" />
     <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\direction.cpp" />
     <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\point.cpp" />
+    <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\ltimer.cpp" />
+    <ClCompile Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\gamesession.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\Роман\OneDrive\Робочий стіл\проги\Pet projects\15 puzzle\build\ZERO_CHECK.vcxproj">
