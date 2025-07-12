@@ -13,15 +13,21 @@ bool GameSession::loadFont(){
     return success;
 }
 
+void GameSession::deleteFont(){
+    if ( m_font != nullptr ){
+        TTF_CloseFont( m_font );
+        m_font = nullptr;
+    }
+}
+
 GameSession::GameSession(){
     m_timer.start();
 }
 
-bool GameSession::isActive() { return !m_timer.isPaused(); }
-bool GameSession::isOver() { return m_board.isSolved(); }
+bool GameSession::isActive() const { return !m_timer.isPaused(); }
 
-int GameSession::getMoves() { return m_moves; }
-Uint64 GameSession::getTime() { return m_timer.getTicks(); }
+int GameSession::getMoves() const { return m_moves; }
+Uint64 GameSession::getTime() const { return m_timer.getTicks(); }
 
 void GameSession::handleEvent( SDL_Event& e ){
     if ( e.type == SDL_EVENT_KEY_DOWN ) {
@@ -53,7 +59,7 @@ void GameSession::handleEvent( SDL_Event& e ){
     }
 }
 
-void GameSession::show( SDL_Renderer* renderer ){
+void GameSession::show( SDL_Renderer* renderer ) const{
     SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
     SDL_RenderClear( renderer );
     m_board.display( renderer );

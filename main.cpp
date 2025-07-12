@@ -31,6 +31,7 @@ bool init(){
 
 void close(){
     Tile::deleteFont();
+    GameSession::deleteFont();
     SDL_DestroyRenderer( gRenderer );
     SDL_DestroyWindow( gWindow );
     gRenderer = nullptr;

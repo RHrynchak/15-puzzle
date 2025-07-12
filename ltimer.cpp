@@ -32,7 +32,7 @@ void LTimer::unpause(){
     }
 }
 
-Uint64 LTimer::getTicks(){
+Uint64 LTimer::getTicks() const {
     Uint64 time = 0;
     if ( mStarted ){
         if ( mPaused ){

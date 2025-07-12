@@ -1,5 +1,4 @@
 #include "board.h"
-#include "constants.h"
 #include <algorithm>
 
 Board::Board( int shuffles ){

@@ -6,13 +6,13 @@ class GameSession{
 public:
     GameSession();
     static bool loadFont();
-    bool isActive();
-    bool isOver();
+    static void deleteFont();
+    bool isActive() const;
     void handleEvent( SDL_Event& e );
-    int getMoves();
-    Uint64 getTime();
+    int getMoves() const;
+    Uint64 getTime() const;
     void restart();
-    void show( SDL_Renderer* renderer );
+    void show( SDL_Renderer* renderer ) const;
 private:
     static TTF_Font* m_font;
     Direction m_direction;
